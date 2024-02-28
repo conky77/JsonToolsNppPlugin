@@ -30,14 +30,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### To Be Changed
 
-- If there's a validation error inside of an `anyOf` list of schemas (i.e. JSON doesn't validate under *any* of the schemas), the error message is rather uninformative, and says only "the JSON didn't validate under any of the schemas", but not *why* it didn't validate.
 - *(Note to future devs)*: Resist the temptation to fool around with the StringBuilder initial capacity for the ToString method of `Dtype.STR` JNodes. I tried, and it doesn't help performance.
 
 ### To Be Fixed
 
-- Make sure there aren't any easily-triggered race conditions induced by [automatic parsing and validation after editing](/docs/README.md#automatically-check-for-errors-after-editing).
-    - In 6.1.1.18, there is no longer a global shared JsonParser, which was the main potential source of race conditions.
-- It seems like there may be a bug (haven't been able to reproduce it recently) where under some conditions, [automatic validation after editing](/docs/README.md#automatically-check-for-errors-after-editing) causes an endless loop where the document is re-validated over and over again for no apparent reason.
 - Fix issue where pretty-printing or compressing causes tree view position tracking to be out of sync with the document until a query is issued or the `Refresh` button is hit.
 - Improve Alt-key accelerators *in forms*. They don't seem to work right for some reason.
 - When a tree viewer is refreshed using JSON from a file with a different name, the title of the docking form that the user sees doesn't change to reflect the new file. For example, a tree viewer is opened up for `foo.json` and then refreshed with a buffer named `bar.json`, and the title of the docking form still reads `Json Tree View for foo.json`.
